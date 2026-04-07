@@ -1,0 +1,6 @@
+FROM python:3.11-slim
+WORKDIR /app
+RUN pip install pika
+COPY publisher.py .
+ENTRYPOINT ["python", "publisher.py"]
+CMD ["50"]

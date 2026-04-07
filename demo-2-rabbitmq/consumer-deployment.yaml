@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: order-consumer
+  namespace: default
+spec:
+  replicas: 0
+  selector:
+    matchLabels:
+      app: order-consumer
+  template:
+    metadata:
+      labels:
+        app: order-consumer
+    spec:
+      containers:
+        - name: consumer
+          image: order-consumer:latest
+          imagePullPolicy: Never
+          env:
+            - name: RABBITMQ_HOST
+              value: "rabbitmq"
+            - name: QUEUE_NAME
+              value: "orders"
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+            limits:
+              cpu: "200m"
+              memory: "256Mi"
