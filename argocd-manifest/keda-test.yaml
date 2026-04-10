@@ -1,0 +1,29 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: keda-test
+  namespace: argocd
+  finalizers:
+  - resource-finalizer.argocd.argoproj.io
+spec:
+  ignoreDifferences:
+  - group: apps
+    kind: Deployment
+    jsonPointers:
+    - /spec/replicas
+  - group: apps
+    kind: Statefulset
+    jsonPointers:
+    - /spec/replicas 
+  project: default
+  source:
+    repoURL: https://github.com/srikanthhg/KEDA-Zero-to-Hero.git
+    targetRevision: main
+    path: test-keda-cron
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
