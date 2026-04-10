@@ -46,4 +46,4 @@ spec:
     horizontalPodAutoscalerConfig:
       behavior:
         scaleDown:
-          stabilizationWindowSeconds: 10
+          stabilizationWindowSeconds: 10 # HPA reacts within 10s of KEDA's signal
