@@ -30,17 +30,17 @@ metadata:
   namespace: default
 spec:
   scaleTargetRef:
-    name: frontend
-  pollingInterval: 10
-  cooldownPeriod: 10
-  minReplicaCount: 0
-  maxReplicaCount: 5
+    name: frontend  # Targets the frontend Deployment for scaling
+  pollingInterval: 10 # KEDA checks cron schedule every 10 seconds (default: 30s)
+  cooldownPeriod: 10 # After cron ends, wait 10s before signaling scale-down (default: 300s)
+  minReplicaCount: 1 # Scales down to 0 pods when cron is inactive
+  maxReplicaCount: 5 # Hard cap: never scale beyond 5 pods
   triggers:
     - type: cron
       metadata:
         timezone: Asia/Kolkata
-        start: "20 13 * * *"
-        end: "25 13 * * *"
+        start: "45 16 * * *"
+        end: "47 16 * * *"
         desiredReplicas: "2"
   advanced:
     horizontalPodAutoscalerConfig:
