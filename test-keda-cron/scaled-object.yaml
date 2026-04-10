@@ -39,7 +39,7 @@ spec:
     - type: cron
       metadata:
         timezone: Asia/Kolkata
-        start: "46 12 * * *"
+        start: "45 12 * * *"
         end: "48 12 * * *"
         desiredReplicas: "2"
   advanced:
