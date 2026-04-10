@@ -39,8 +39,8 @@ spec:
     - type: cron
       metadata:
         timezone: Asia/Kolkata
-        start: "49 12 * * *"
-        end: "52 12 * * *"
+        start: "54 12 * * *"
+        end: "56 12 * * *"
         desiredReplicas: "2"
   advanced:
     horizontalPodAutoscalerConfig:
