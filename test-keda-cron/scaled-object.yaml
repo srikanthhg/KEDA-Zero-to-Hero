@@ -26,7 +26,7 @@ spec:
 apiVersion: keda.sh/v1alpha1
 kind: ScaledObject
 metadata:
-  name: cron-scaled-object
+  name: cron-scaled-object1
   namespace: default
 spec:
   scaleTargetRef:
@@ -39,7 +39,7 @@ spec:
     - type: cron
       metadata:
         timezone: Asia/Kolkata
-        start: "45 12 * * *"
+        start: "46 12 * * *"
         end: "48 12 * * *"
         desiredReplicas: "2"
   advanced:
